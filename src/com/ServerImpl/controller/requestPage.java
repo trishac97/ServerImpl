@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ServerImpl.DAO.TrackRequest;
 import com.ServerImpl.model.ClientSide;
 
 
@@ -39,6 +40,9 @@ public class requestPage extends HttpServlet {
 		//Get difficulty
 		int difficulty = 2;
 		
+		//Tracking incoming data volume and storing to listen_queue
+		TrackRequest obj = new TrackRequest();
+		obj.saveIncomingReq(req_ID);
 		 ServletContext sc = request.getServletContext().getContext("/ClientImpl");
 		 
 		 request.setAttribute("req_ID", req_ID);
